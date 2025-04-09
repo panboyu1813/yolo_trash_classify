@@ -11,7 +11,7 @@ from ultralytics import YOLO
 app = Flask(__name__)
 
 # Config
-model_path = os.getenv('MODEL_PATH', '/home/whale/idkhowtoteach/runs/classify/train3/weights/best.pt')
+model_path = os.getenv('MODEL_PATH', 'best.pt')
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
 CLASS_TRANSLATION = {
     "bottle": "寶特瓶",
@@ -25,7 +25,6 @@ CLASS_TRANSLATION = {
     "tin_and_aluminum_cans": "鐵鋁罐"
 }
 
-# 直接在啟動時載入模型（適用於 Flask 2.3+）
 model = YOLO(model_path)
 
 def preprocess_image(input_image: bytes, target_size=(512, 512)):
@@ -54,11 +53,9 @@ def predict():
     if file.filename == '':
         return jsonify({'error': 'No file selected'}), 400
     
-    # 檢查檔案類型
     if not ('.' in file.filename and file.filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg'}):
         return jsonify({'error': 'Unsupported file type'}), 400
     
-    # 檢查檔案大小
     file.seek(0, os.SEEK_END)
     if file.tell() > MAX_FILE_SIZE:
         abort(413)
@@ -85,4 +82,4 @@ def predict():
         return jsonify({'error': 'Internal server error'}), 500
 
 if __name__ == '__main__':
-    app.run(host='23.146.248.101', port=13579, debug=False)
+    app.run(debug=False)
