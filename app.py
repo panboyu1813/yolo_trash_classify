@@ -17,7 +17,12 @@ CLASS_TRANSLATION = {
     "bottle": "寶特瓶",
     "general_waste": "一般垃圾",
     "hard_plastic": "硬塑膠",
-    # ...其他類別翻譯...
+    "mixed_waste": "混和垃圾",
+    "paper": "紙類",
+    "paper_containers": "紙容器",  
+    "retort_pouch": "鋁箔包",  
+    "soft_plastic": "軟塑膠",
+    "tin_and_aluminum_cans": "鐵鋁罐"
 }
 
 # 直接在啟動時載入模型（適用於 Flask 2.3+）
