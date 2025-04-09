@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>垃圾該丟哪呢?</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FF99C8, #FFCC00);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .custom-file-input {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: 1.2em;
+            background-color: #FF99C8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-file-input:hover {
+            background-color: #FFCC00;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            background-color: #FF99C8;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #FFCC00;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Upload an Image for YOLO Object Detection</h1>
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            <input type="file" id="file" name="file" capture="environment" accept="image/*" required/>
+            <button type="submit">Upload and Classify</button>
+        </form>
+    </div>
+</body>
+</html>
